@@ -17,11 +17,6 @@ const roboto = Roboto({
   style: ["normal", "italic"],
 });
 
-export const metadata = {
-  title: "WalletFi",
-  description: "Web3 Wallet with swap and Drip Network",
-};
-
 export default function RootLayout({ children }) {
   const { addr, checkIfWalletIsConnected, addAddress } = UseWeb3();
   const [isLoading, setIsLoading] = useState(true);
@@ -48,6 +43,9 @@ export default function RootLayout({ children }) {
   return (
     <>
       <html lang="en">
+        <head>
+          <title>WalletFi</title>
+        </head>
         <body className={roboto.className + " " + "wrapper"}>
           <Header />
 
