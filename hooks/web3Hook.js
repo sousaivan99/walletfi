@@ -159,6 +159,8 @@ export const UseWeb3 = () => {
         avPriceSpan.className = "avPrice";
         avPriceSpan.textContent =
           "$" + (Number(price) * Number(balance)).toFixed(2);
+        console.log(Number(price) * Number(balance));
+        console.log((Number(price) * Number(balance)).toFixed(2));
         availableDiv.appendChild(avPriceSpan);
       }
 
