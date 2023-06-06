@@ -89,7 +89,7 @@ h1 a:hover {
 .active {
   font-weight: 500 !important;
   color: var(--red) !important;
-  border-right: 3px solid var(--red);
+  border-right: 2px solid var(--red);
 }
 .active svg {
   fill: var(--red) !important;
