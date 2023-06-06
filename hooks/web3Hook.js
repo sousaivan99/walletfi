@@ -249,7 +249,7 @@ export const UseWeb3 = () => {
 
   const addTableRowsTransaction = async (table) => {
     const fragment = document.createDocumentFragment();
-    const transactions = await fetchTransaction();
+    let transactions = await fetchTransaction();
 
     for (const transaction of transactions) {
       const { hash, age, from, to, value, fee, fullTxnHash } = transaction;

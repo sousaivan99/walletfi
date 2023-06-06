@@ -10,7 +10,7 @@ const DripSell = () => {
     checkIfWalletIsConnected,
     addAddress,
     sellDrip,
-    getBalance,
+    getBal,
     estimateSellDrip,
   } = useWeb3();
   const [balance, setBalance] = useState("");
@@ -19,9 +19,7 @@ const DripSell = () => {
     await addAddress(address);
   });
   const get_Balance = async () => {
-    const balance = await getBalance(
-      "0x20f663CEa80FaCE82ACDFA3aAE6862d246cE0333"
-    );
+    const balance = await getBal("0x20f663CEa80FaCE82ACDFA3aAE6862d246cE0333");
     setBalance(balance);
   };
   const sell = async () => {
