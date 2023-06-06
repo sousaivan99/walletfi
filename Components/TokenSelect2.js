@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Select from "react-select";
+import Image from "next/image";
 import "@styles/swap.css";
 
 const TokenSelect = ({ tokenList, check }) => {
@@ -58,7 +59,7 @@ const TokenSelect = ({ tokenList, check }) => {
 
   const customOptionRenderer = (option) => (
     <div className="swap-selectBox__option">
-      <img
+      <Image
         src={option.logo}
         alt={option.name}
         style={customStyles.optionImage}

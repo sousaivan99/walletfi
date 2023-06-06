@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import "@styles/wallet.css";
 import "@styles/transaction.css";
 import Image from "next/image";
-import useWeb3 from "@app/web3Hook";
+import useWeb3 from "@hooks/web3Hook";
 
-const wallet = () => {
+const Transaction = () => {
   const { addr, checkIfWalletIsConnected, getTransaction, addAddress } =
     useWeb3();
   const [isLoading, setIsLoading] = useState(true);
@@ -167,4 +167,4 @@ const wallet = () => {
   );
 };
 
-export default wallet;
+export default Transaction;

@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 import "@styles/calculator.css";
 import Wallet from "@Components/wallet";
 
-const calculator = () => {
+const Calculator = () => {
   const [principle, setPrinciple] = useState(0);
   const [price, setPrice] = useState(1);
-  const [day, setdays] = useState(0);
-  const [day2, setday2] = useState(0);
-  const [day3, setday3] = useState(0);
-  const [dailyInterest, setdailyInterest] = useState(0);
+  const [day, setDays] = useState(0);
+  const [day2, setDay2] = useState(0);
+  const [day3, setDay3] = useState(0);
+  const [dailyInterest, setDailyInterest] = useState(0);
+
   function formatNumber(number) {
     return number.toLocaleString(undefined, {
       minimumFractionDigits: 2,
@@ -21,13 +22,13 @@ const calculator = () => {
     const principal = parseFloat(a);
     const interestRate = parseFloat(di) / 100;
 
-    //setting days in the future
+    // Setting days in the future
     const day2 = d * 2;
     const day3 = parseFloat(d * 2) + parseFloat(d);
-    setday3(day3);
-    setday2(day2);
+    setDay2(day2);
+    setDay3(day3);
 
-    //calculate compound
+    // Calculate compound
     const compoundAmount = principal * (1 + interestRate) ** d;
 
     const total$ = compoundAmount.toFixed(2) * p;
@@ -39,8 +40,7 @@ const calculator = () => {
     document.getElementById("1%").innerHTML =
       formatNumber(daily) + "/day " + "($" + formatNumber(dailyDollar) + ")";
 
-    //calculate compound further in the future
-
+    // Calculate compound further in the future
     const compoundAmount2 = principal * Math.pow(1 + interestRate, day2);
 
     const total$2 = compoundAmount2.toFixed(2) * p;
@@ -52,7 +52,7 @@ const calculator = () => {
     document.getElementById("1%2").innerHTML =
       formatNumber(daily2) + "/day " + "($" + formatNumber(dailyDollar2) + ")";
 
-    //calculate compound even further in the future
+    // Calculate compound even further in the future
     const compoundAmount3 = principal * Math.pow(1 + interestRate, day3);
 
     const total$3 = compoundAmount3.toFixed(2) * p;
@@ -64,25 +64,28 @@ const calculator = () => {
     document.getElementById("1%3").innerHTML =
       formatNumber(daily3) + "/day " + "($" + formatNumber(dailyDollar3) + ")";
   }
+
   const handleAmountChange = (event) => {
     const amountInput = event.target.value;
     setPrinciple(amountInput);
   };
+
   const handlePriceChange = (event) => {
     const priceInput = event.target.value;
     setPrice(priceInput);
   };
+
   const handleDay = (event) => {
     const dayInput = event.target.value;
-    setdays(dayInput);
-    setday2(dayInput * 2);
+    setDays(dayInput);
+    setDay2(dayInput * 2);
     const d3 = parseFloat(dayInput * 2) + parseFloat(dayInput);
-
-    setday3(d3);
+    setDay3(d3);
   };
+
   const handleDailyInterest = (event) => {
     const dailyInput = event.target.value;
-    setdailyInterest(dailyInput);
+    setDailyInterest(dailyInput);
   };
 
   useEffect(() => {
@@ -182,4 +185,4 @@ const calculator = () => {
   );
 };
 
-export default calculator;
+export default Calculator;

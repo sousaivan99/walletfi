@@ -6,7 +6,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import Header from "@Components/header";
 import Banner from "@Components/banner";
-import useWeb3 from "@app/web3Hook";
+import UseWeb3 from "@hooks/web3Hook";
 import { debounce } from "lodash";
 
 library.add(fas);
@@ -23,7 +23,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const { addr, checkIfWalletIsConnected, addAddress } = useWeb3();
+  const { addr, checkIfWalletIsConnected, addAddress } = UseWeb3();
   const [isLoading, setIsLoading] = useState(true);
 
   const handleAccountsChanged = useCallback(

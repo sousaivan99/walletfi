@@ -2,7 +2,7 @@ import React from "react";
 import "@styles/banner.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const banner = () => {
+const Banner = () => {
   return (
     <div className="banner">
       <p>
@@ -23,4 +23,4 @@ const banner = () => {
   );
 };
 
-export default banner;
+export default Banner;

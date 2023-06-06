@@ -9,19 +9,19 @@ import BigNumber from "bignumber.js";
 const tools = require("@utils/utils.js");
 
 const LPABI = require("@abi/lptoken.json");
-
 // connect to the Binance Smart Chain
-if (typeof window !== "undefined") {
-  const web3 = new Web3(window.ethereum);
-}
 
 //DripLiq Contract
-const dripLQAddress = "0x4Fe59AdcF621489cED2D674978132a54d432653A";
-if (typeof window !== "undefined") {
-  const dripLQContract = new web3.eth.Contract(LPABI, dripLQAddress);
-}
 
-function useWeb3() {
+export const UseWeb3 = () => {
+  let web3 = "";
+  let dripLQAddress = "";
+  let dripLQContract = "";
+  if (typeof window !== "undefined") {
+    web3 = new Web3(window.ethereum);
+    dripLQAddress = "0x4Fe59AdcF621489cED2D674978132a54d432653A";
+    dripLQContract = new web3.eth.Contract(LPABI, dripLQAddress);
+  }
   const [addr, setAddress] = useState();
   let accounts = [];
   const TOKEN_ABI = [
@@ -183,38 +183,43 @@ function useWeb3() {
   };
 
   const getBalances = async () => {
-    try {
-      const updatedBalances = {};
-      const balancePromises = tokenContracts.map(async (token) => {
-        if (token.address === "0x0000000000000000000000000000000000000000") {
-          return web3.eth.getBalance(addr);
-        } else {
-          const tokenContract = new web3.eth.Contract(TOKEN_ABI, token.address);
-          return tokenContract.methods.balanceOf(addr).call();
+    if (typeof window !== "undefined") {
+      try {
+        const updatedBalances = {};
+        const balancePromises = tokenContracts.map(async (token) => {
+          if (token.address === "0x0000000000000000000000000000000000000000") {
+            return await web3.eth.getBalance(addr);
+          } else {
+            const tokenContract = new web3.eth.Contract(
+              TOKEN_ABI,
+              token.address
+            );
+            return await tokenContract.methods.balanceOf(addr).call();
+          }
+        });
+
+        const balances = await Promise.all(balancePromises);
+
+        for (let i = 0; i < tokenContracts.length; i++) {
+          const token = tokenContracts[i];
+          const { name } = token;
+          const balance = balances[i];
+
+          const formattedBalance = tools.formatWEI(balance, 4);
+          updatedBalances[name] = formattedBalance;
         }
-      });
 
-      const balances = await Promise.all(balancePromises);
+        const table = document.getElementById("wallet-table");
+        if (!table) {
+          throw new Error("Table element with id 'wallet-table' not found.");
+        }
 
-      for (let i = 0; i < tokenContracts.length; i++) {
-        const token = tokenContracts[i];
-        const { name } = token;
-        const balance = balances[i];
+        addTableRows(table, updatedBalances);
 
-        const formattedBalance = tools.formatWEI(balance, 4);
-        updatedBalances[name] = formattedBalance;
+        return updatedBalances;
+      } catch (error) {
+        console.log("Failed to get balances:", error);
       }
-
-      const table = document.getElementById("wallet-table");
-      if (!table) {
-        throw new Error("Table element with id 'wallet-table' not found.");
-      }
-
-      addTableRows(table, updatedBalances);
-
-      return updatedBalances;
-    } catch (error) {
-      console.log("Failed to get balances:", error);
     }
   };
   const getTransaction = async () => {
@@ -292,25 +297,31 @@ function useWeb3() {
     table.appendChild(newTbody);
   };
 
-  const getBalance = async (tokenaddress) => {
-    try {
-      const balancePromise = async () => {
-        if (tokenaddress === "0x0000000000000000000000000000000000000000") {
-          return web3.eth.getBalance(addr);
-        } else {
-          const tokenContract = new web3.eth.Contract(TOKEN_ABI, tokenaddress);
-          return tokenContract.methods.balanceOf(addr).call();
-        }
-      };
+  const getBal = async (tokenaddress) => {
+    if (typeof window !== "undefined") {
+      try {
+        const balancePromise = async () => {
+          if (tokenaddress === "0x0000000000000000000000000000000000000000") {
+            console.log(addr);
+            return await web3.eth.getBalance(addr);
+          } else {
+            const tokenContract = new web3.eth.Contract(
+              TOKEN_ABI,
+              tokenaddress
+            );
+            return await tokenContract.methods.balanceOf(addr).call();
+          }
+        };
 
-      const balance = await Promise.all([balancePromise()]); // Invoke balancePromise as a function
+        const balance = await Promise.all([balancePromise()]); // Invoke balancePromise as a function
 
-      const formattedBalance = tools.formatWEI(balance, 4);
-      const truncatedBalance = Number(formattedBalance).toFixed(4); // Truncate the decimal places
+        const formattedBalance = tools.formatWEI(balance, 4);
+        const truncatedBalance = Number(formattedBalance).toFixed(4); // Truncate the decimal places
 
-      return truncatedBalance;
-    } catch (error) {
-      console.log("Failed to get balance:", error);
+        return truncatedBalance;
+      } catch (error) {
+        console.log("Failed to get balance:", error);
+      }
     }
   };
 
@@ -539,7 +550,7 @@ function useWeb3() {
     addr,
     getPrices,
     getTransaction,
-    getBalance,
+    getBal,
     addAddress,
     getQuote,
     doSwap,
@@ -549,5 +560,6 @@ function useWeb3() {
     checkAllowance,
     estimateSellDrip,
   }; // Return the connect function
-}
-export default useWeb3;
+};
+
+export default UseWeb3;

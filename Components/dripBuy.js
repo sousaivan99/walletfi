@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "@styles/swap.css";
 import BigNumber from "bignumber.js";
-import useWeb3 from "@app/web3Hook";
+import useWeb3 from "@hooks/web3Hook";
 
 const DripBuy = () => {
   const {

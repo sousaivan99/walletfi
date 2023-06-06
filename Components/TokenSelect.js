@@ -3,12 +3,13 @@ import React, { useEffect, useState, useCallback } from "react";
 import Select from "react-select";
 import "@styles/swap.css";
 import BigNumber from "bignumber.js";
-import useWeb3 from "@app/web3Hook";
+import Image from "next/image";
+import useWeb3 from "@hooks/web3Hook";
 const tools = require("@utils/utils.js");
 
 const TokenSelect = ({ tokenList }) => {
   const {
-    getBalance,
+    getBal,
     addr,
     checkIfWalletIsConnected,
     addAddress,
@@ -20,13 +21,13 @@ const TokenSelect = ({ tokenList }) => {
   const [selected1, setSelected1] = useState("");
   const [selected2, setSelected2] = useState("");
   const handleTokenChange = async (selectedToken) => {
-    const balance1 = await getBalance(selectedToken.value);
+    const balance1 = await getBal(selectedToken.value);
     setBalance(balance1);
     setSelected1(selectedToken.value);
     // Additional logic or state updates based on the selected token
   };
   const handleTokenChange2 = async (selectedToken) => {
-    const balance2 = await getBalance(selectedToken.value);
+    const balance2 = await getBal(selectedToken.value);
     setBalance2(balance2);
     setSelected2(selectedToken.value);
     // Additional logic or state updates based on the selected token
@@ -81,7 +82,7 @@ const TokenSelect = ({ tokenList }) => {
 
   const customOptionRenderer = (option) => (
     <div className="swap-selectBox__option">
-      <img
+      <Image
         src={option.logo}
         alt={option.name}
         style={customStyles.optionImage}

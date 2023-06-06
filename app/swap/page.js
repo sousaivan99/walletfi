@@ -8,7 +8,7 @@ import DripBuy from "@Components/dripBuy";
 import DripSell from "@Components/dripSell";
 import "@styles/swap.css";
 
-const swap = () => {
+const Swap = () => {
   const [modalOpen, setModelOpen] = useState(false);
   const close = () => setModelOpen(false);
   const open = () => setModelOpen(true);
@@ -122,4 +122,4 @@ const swap = () => {
   );
 };
 
-export default swap;
+export default Swap;

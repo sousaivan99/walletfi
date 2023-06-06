@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import Modal from "@Components/Modal/Modal";
 import { motion, AnimatePresence } from "framer-motion";
 import "@styles/header.css";
-import useWeb3 from "@app/web3Hook";
-const header = () => {
+import useWeb3 from "@hooks/web3Hook";
+const Header = () => {
   const { connect, addr, checkIfWalletIsConnected } = useWeb3();
   const [modalOpen, setModelOpen] = useState(false);
   const [error, setError] = useState("");
@@ -209,4 +209,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;

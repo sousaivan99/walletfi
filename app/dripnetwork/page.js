@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import tokenList from "@crypto/tokenContracts";
 import "@styles/swap.css";
 
-const swap = () => {
+const Drip = () => {
   const [modalOpen, setModelOpen] = useState(false);
   return (
     <>
@@ -12,4 +12,4 @@ const swap = () => {
   );
 };
 
-export default swap;
+export default Drip;
