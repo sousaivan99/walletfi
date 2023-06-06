@@ -114,7 +114,7 @@ const TokenSelect = ({ tokenList }) => {
         const amount = new BigNumber(a).times(10 ** 18);
         const res = await getQuote(selected1, selected2, amount);
         const toTokenAmount = new BigNumber(res.toTokenAmount);
-        let c = Number(toTokenAmount.dividedBy(10 ** 18));
+        let c = toTokenAmount.dividedBy(10 ** 18);
         document.getElementById("input2").value = c.toFixed(4);
         console.log("res: " + res);
         console.log("toTokenAmount: " + toTokenAmount);

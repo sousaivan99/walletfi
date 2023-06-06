@@ -17,9 +17,10 @@ export default async function handler(req, res) {
     const quote = response.data;
 
     res.status(200).json(quote);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({
-      error: "Failed to fetch quote",
+      error: err,
+      message: "Failed to fetch quote",
       coin1: selectedCoin1,
       coin2: selectedCoin2,
       amount: a,
