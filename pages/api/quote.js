@@ -14,13 +14,15 @@ export default async function handler(req, res) {
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch quote");
+      throw new Error(response.statusText);
     }
 
     const quote = await response.json();
 
-    // Add Access-Control-Allow-Origin header to allow cross-origin requests
+    // Add CORS headers to allow cross-origin requests
     res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, Content-Type");
 
     res.status(200).json(quote);
   } catch (error) {
