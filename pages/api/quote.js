@@ -1,4 +1,5 @@
 import axios from "axios";
+export const runtime = "edge";
 import BigNumber from "bignumber.js";
 
 export default async function handler(req, res) {
