@@ -1,4 +1,5 @@
 import axios from "axios";
+export const runtime = "edge";
 
 export default async function handler(req, res) {
   let { selectedCoin1, addr } = req.query;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import BigNumber from "bignumber.js";
+export const runtime = "edge";
 
 export default async function handler(req, res) {
   let { selectedCoin1, selectedCoin2, a } = req.query;

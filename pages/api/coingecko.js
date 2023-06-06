@@ -1,5 +1,5 @@
 import axios from "axios";
-
+export const runtime = "edge";
 // Create an empty cache object
 const cache = {};
 
