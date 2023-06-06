@@ -11,11 +11,15 @@ const tools = require("@utils/utils.js");
 const LPABI = require("@abi/lptoken.json");
 
 // connect to the Binance Smart Chain
-const web3 = new Web3(window.ethereum);
+if (typeof window !== "undefined") {
+  const web3 = new Web3(window.ethereum);
+}
 
 //DripLiq Contract
 const dripLQAddress = "0x4Fe59AdcF621489cED2D674978132a54d432653A";
-const dripLQContract = new web3.eth.Contract(LPABI, dripLQAddress);
+if (typeof window !== "undefined") {
+  const dripLQContract = new web3.eth.Contract(LPABI, dripLQAddress);
+}
 
 function useWeb3() {
   const [addr, setAddress] = useState();
@@ -34,27 +38,37 @@ function useWeb3() {
   ];
 
   const connect = async () => {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        const address = accounts[0];
-        setAddress(address);
-        tools.setDataInElement("Connect", tools.truncateString(address));
-      } catch (error) {
-        console.error(error);
-        return error;
+    if (typeof window !== "undefined") {
+      // Client-side-only code
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+          const address = accounts[0];
+          setAddress(address);
+          tools.setDataInElement("Connect", tools.truncateString(address));
+        } catch (error) {
+          console.error(error);
+          return error;
+        }
+      } else {
+        return "Please install MetaMask";
       }
     } else {
-      return "Please install MetaMask";
+      return "This code can only be executed in the browser";
     }
   };
+
   const addAddress = async (address) => {
     setAddress(address);
   };
   const checkIfWalletIsConnected = async () => {
-    if (window.ethereum && window.ethereum.selectedAddress) {
+    if (
+      typeof window !== "undefined" &&
+      window.ethereum &&
+      window.ethereum.selectedAddress
+    ) {
       try {
         const accounts = await window.ethereum.request({
           method: "eth_accounts",
