@@ -1,0 +1,99 @@
+.wallet-cont {
+  background-color: var(--white);
+  padding: 1em;
+  border-radius: 10px;
+  min-height: 300px;
+}
+.supported-tokens {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  gap: 1em;
+}
+@media only screen and (max-width: 900px) {
+  .wallet-cont {
+    background-color: var(--white);
+    padding: 1em;
+    border-radius: 10px;
+  }
+}
+.wallet-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3em;
+  margin-bottom: 1em;
+}
+.wallet-cont h2 {
+  color: var(--black);
+  font-size: 21px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.transaction-cont {
+  margin-top: 50px;
+  background-color: var(--white);
+  padding: 1em;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 900px) {
+  .transaction-cont {
+    background-color: var(--white);
+    padding: 1em;
+    border-radius: 10px;
+  }
+}
+.transaction-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3em;
+  margin-bottom: 1em;
+}
+.transaction-cont h2 {
+  color: var(--black);
+  font-size: 21px;
+  font-weight: 500;
+}
+.infoIcon {
+  height: fit-content;
+  fill: var(--info);
+  width: 15px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  gap: 0.2em;
+  z-index: 9999;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  max-width: fit-content;
+  min-width: 150px;
+  background-color: var(--subtext);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1em;
+  position: absolute;
+  z-index: 1;
+  top: -99%;
+  z-index: 9999;
+  left: 120%;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--subtext) transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

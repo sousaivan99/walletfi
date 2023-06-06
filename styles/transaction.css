@@ -1,0 +1,56 @@
+.tabletxn {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tabletxn th {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+}
+.tabletxn tr {
+  transition: 0.2s ease-in-out;
+}
+.tabletxn tr td {
+  /* width: 15%; */
+  white-space: nowrap;
+}
+.tabletxn td a:hover {
+  font-weight: normal;
+  text-decoration: underline;
+}
+.tabletxn td:nth-child(1) a {
+  color: var(--text);
+}
+.tabletxn td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+.tabletxn td {
+  font-size: 18px;
+  border-bottom: 1px solid var(--Tline);
+}
+
+.tabletxn tbody > tr {
+  height: 60px;
+}
+.tabletxn tbody > tr:hover {
+  background-color: var(--hoverT);
+}
+
+.available {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+}
+.avPrice {
+  font-weight: 800 !important;
+}
+.avBalance {
+  font-size: 12px !important;
+  color: #7d7d7d !important;
+}
+a:hover {
+  border: 0;
+}

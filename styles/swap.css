@@ -1,0 +1,228 @@
+.swap-conter {
+  background-color: var(--white);
+  padding: 1em;
+  border-radius: 10px;
+  height: 250px;
+  flex: 1;
+}
+.cont {
+  background-color: var(--white);
+  padding: 1em;
+  border-radius: 10px;
+  flex: 1;
+}
+@media only screen and (max-width: 900px) {
+  .cont {
+    background-color: var(--white);
+    padding: 1em;
+    border-radius: 10px;
+  }
+  .swap-conter {
+    background-color: var(--white);
+    padding: 1em;
+    border-radius: 10px;
+  }
+}
+.swap-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3em;
+  margin-bottom: 1em;
+}
+.swap-header h2 {
+  color: var(--black);
+  font-size: 21px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.infoIcon {
+  height: fit-content;
+  fill: var(--info);
+  width: 15px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  gap: 0.2em;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  max-width: fit-content;
+  min-width: 150px;
+  background-color: var(--subtext);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1em;
+  position: absolute;
+  top: -99%;
+  left: 120%;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  z-index: 9999;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--subtext) transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+@media only screen and (max-width: 900px) {
+  .cont {
+    margin-top: 1em;
+    padding-top: 1em;
+    justify-content: center;
+    gap: 2em;
+    width: 100%;
+  }
+  .swap-cont {
+    margin: 0 auto;
+    width: fit-content;
+    display: flex !important;
+    flex-direction: column;
+    gap: 1em !important;
+  }
+  .swap-header {
+    width: 100%;
+  }
+  .component {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}
+.swap-cont {
+  display: flex !important;
+  justify-content: space-around;
+  gap: 1em !important;
+}
+
+.swap-cont input {
+  height: 45px;
+  border: 0;
+  border-radius: 6px;
+  padding: 1em;
+  font-size: 18px;
+  width: 100%;
+}
+.select-div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  width: 350px;
+}
+.select-div input {
+  height: 50px;
+  padding: 1em;
+  font-size: 18px;
+  border: 0;
+  border-radius: 6px;
+  background-color: var(--input);
+  color: var(--inputT);
+}
+.select-div input:focus {
+  outline: none;
+  border: 2px solid var(--lightblue);
+}
+.swap-selectBox {
+  width: 150px;
+}
+.swap-selectBox__option {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+.select-div-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select-div-top {
+  font-size: 14px;
+}
+.send-cont {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.send-cont2 {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.send-cont2 button {
+  width: 150px;
+  height: 35px;
+  border: 0;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 18px;
+  border-radius: 6px;
+  transition: 0.2s ease-in-out;
+}
+.send-cont2 button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.send-cont button {
+  width: 150px;
+  height: 35px;
+  border: 0;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 18px;
+  border-radius: 6px;
+  transition: 0.2s ease-in-out;
+}
+.send-cont button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.send-cont span {
+  font-size: 14px;
+}
+.token {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.token img {
+  width: 25px;
+}
+.infoApprove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-top: 2em;
+  color: var(--subtext);
+}
+.infoApprove svg {
+  width: 25px !important;
+  height: 25px !important;
+}
+.BuySell {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  height: fit-content;
+  gap: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  align-items: center;
+  justify-content: center;
+}

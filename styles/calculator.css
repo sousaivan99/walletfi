@@ -1,0 +1,117 @@
+.cont {
+  margin-top: 1em;
+  background-color: var(--white);
+  padding: 1em;
+  border-radius: 10px;
+  min-height: 300px;
+}
+.calculator-cont {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  min-height: fit-content !important;
+  padding: 1em;
+  gap: 1em;
+  width: 100% !important;
+}
+.calculator-header {
+  margin-bottom: 1em;
+}
+@media only screen and (max-width: 900px) {
+  .calculator-cont {
+    display: flex;
+    width: 100% !important;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0em;
+    margin-bottom: 1em;
+  }
+  .calculator-settings {
+    gap: 1em;
+    width: 100% !important;
+  }
+  .calculator-settings div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: right;
+    font-size: 15px;
+  }
+  .calculator-settings input {
+    border: 0;
+    border-radius: 6px;
+    padding: 0.5em;
+    font-size: 18px;
+    width: 100% !important;
+  }
+  .calculator-output-cont {
+    width: 100%;
+  }
+  .calculator-output {
+    width: 100% !important;
+  }
+}
+.calculator-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 1em;
+  min-width: 300px;
+}
+.calculator-settings div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  justify-content: right;
+  font-size: 15px;
+  width: 100%;
+}
+.calculator-settings input {
+  height: 50px;
+  padding: 1em;
+  font-size: 18px;
+  border: 0;
+  border-radius: 6px;
+  background-color: var(--input);
+  color: var(--inputT);
+}
+.calculator-settings input:focus {
+  outline: none;
+  border: 2px solid var(--lightblue);
+}
+.calculator-settings div span {
+  width: 100%;
+  font-size: 18px;
+}
+
+.calculator-output-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+}
+.calculator-output {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70px;
+  border-radius: 6px;
+  padding: 1em;
+  gap: 1em;
+  background-color: var(--input);
+  width: 374px;
+}
+#cal-title {
+  color: var(--subtext);
+}
+.cal-daily {
+  gap: 1em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

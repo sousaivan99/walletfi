@@ -1,0 +1,92 @@
+.overflow-table {
+  overflow-y: auto;
+  min-height: fit-content;
+  max-height: 500px;
+}
+.tablewallet {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tablewallet th {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+}
+.tablewallet tr {
+  transition: 0.2s ease-in-out;
+}
+.tablewallet tr td:not(:nth-child(2)) {
+  width: 15%;
+  white-space: nowrap;
+}
+.tablewallet tr td:nth-child(1) {
+  width: 1%;
+  white-space: nowrap;
+}
+.tablewallet td,
+th {
+  text-align: left;
+  padding: 5px;
+}
+.tablewallet td {
+  font-size: 18px;
+  border-bottom: 1px solid var(--Tline);
+}
+
+.tablewallet td:nth-child(2) {
+  font-size: 18px;
+  font-weight: 800;
+}
+.tablewallet td:nth-child(4) {
+  font-size: 18px;
+  font-weight: 800;
+}
+.tablewallet td img {
+  width: 25px;
+  display: flex;
+  align-self: center;
+}
+.tablewallet tbody > tr {
+  height: 30px;
+}
+.tablewallet tbody > tr:hover {
+  background-color: var(--hoverT);
+}
+.available {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+}
+.avPrice {
+  font-weight: 800 !important;
+}
+.avBalance {
+  font-size: 12px !important;
+  color: #7d7d7d !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .content {
+    padding: 0.5em;
+    margin-bottom: 90px;
+  }
+}
+.skeleton {
+  width: 100px;
+  height: 3em !important;
+  background-color: var(--skeleton);
+  animation: skeleton-animation 1s infinite alternate;
+}
+
+@keyframes skeleton-animation {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "coingeckoId": "binancecoin",
+    "name": "BNB",
+    "address": "0x0000000000000000000000000000000000000000",
+    "decimals": 18,
+    "logo": "/bnb-logo.svg"
+  },
+  {
+    "coingeckoId": "drip-network",
+    "name": "DRIP",
+    "address": "0x20f663CEa80FaCE82ACDFA3aAE6862d246cE0333",
+    "decimals": 18,
+    "logo": "/drip-logo.png"
+  },
+  {
+    "coingeckoId": "binance-usd",
+    "name": "BUSD",
+    "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+    "decimals": 18,
+    "logo": "/BUSD-logo.svg"
+  },
+  {
+    "coingeckoId": "tether",
+    "name": "USDT",
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "decimals": 18,
+    "logo": "/USDT-logo.svg"
+  },
+  {
+    "coingeckoId": "usd-coin",
+    "name": "USDC",
+    "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "decimals": 18,
+    "logo": "/USDC-logo.svg"
+  }
+]
