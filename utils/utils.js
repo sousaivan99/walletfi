@@ -1,6 +1,6 @@
 "use client";
 //Utils
-const QRCode = require("qrcode");
+import QRCode from "qrcode";
 
 function truncateString(str) {
   if (str.length > 8) {
@@ -33,7 +33,7 @@ function getMaxDripBalance() {
   const max = document.getElementById("DripBalance").innerHTML;
   document.getElementById("DripInput").value = max;
 }
-function qrCode(id, qrLink) {
+export function qrCode(id, qrLink) {
   const canvas = document.getElementById(id);
 
   if (!canvas) {
@@ -58,16 +58,15 @@ function qrCode(id, qrLink) {
       transactionLink.target = "_blank";
       transactionLink.textContent = `View transaction on BscScan:`;
 
+      let linkContainer = "";
       // Get the container element
-      const linkContainer = document.getElementById("qr_link");
-
-      if (!linkContainer) {
-        console.error(`Link container element with ID 'qr_link' not found.`);
+      if (document.getElementById("qr_link")) {
+        linkContainer = document.getElementById("qr_link");
+        // Append the link to the container element
+        linkContainer.appendChild(transactionLink);
+      } else {
         return;
       }
-
-      // Append the link to the container element
-      linkContainer.appendChild(transactionLink);
     });
   } catch (error) {
     console.error(error);

@@ -159,7 +159,7 @@ const TokenSelect = ({ tokenList }) => {
 
   useEffect(() => {
     if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
+      window.ethereum.on("accountsChanged", async (accounts) => {
         handleAccountsChanged(accounts[0]);
       });
     }
@@ -169,11 +169,8 @@ const TokenSelect = ({ tokenList }) => {
       }
     };
     checkFetch();
-  }, [addr]);
-
-  useEffect(() => {
     getQuoteRes();
-  }, [selected1, selected2]);
+  }, [selected1, selected2, addr, balance]);
   return (
     <>
       <div className="swap-cont">

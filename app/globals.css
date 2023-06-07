@@ -151,6 +151,28 @@ main {
 a {
   text-decoration: none;
 }
+.qrcode-cont {
+  background-color: var(--white);
+  width: fit-content;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+.qrcode-cont canvas {
+  border-radius: 10px;
+  width: fit-content;
+}
+.qrcode-cont p {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media only screen and (max-width: 900px) {
   .wrapper {

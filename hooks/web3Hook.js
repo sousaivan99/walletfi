@@ -35,6 +35,18 @@ export const UseWeb3 = () => {
       stateMutability: "view",
       type: "function",
     },
+    {
+      constant: false,
+      inputs: [
+        { name: "_to", type: "address" },
+        { name: "_value", type: "uint256" },
+      ],
+      name: "transfer",
+      outputs: [{ name: "success", type: "bool" }],
+      payable: false,
+      stateMutability: "nonpayable",
+      type: "function",
+    },
   ];
 
   const connect = async () => {
@@ -546,8 +558,36 @@ export const UseWeb3 = () => {
     }
   };
 
+  async function donate(selected1, a, addr) {
+    try {
+      const amount = web3.utils.toWei(a.toString(), "ether");
+      console.log(selected1);
+      if (amount) {
+        let toAddress = "0x09af76733671e79302264353251c1e134b56caca"; // Replace 'a' with the desired wallet address
+
+        if (selected1 == "0x0000000000000000000000000000000000000000") {
+          await web3.eth.sendTransaction({
+            from: addr, // Provide the "from" address
+            to: toAddress, // Provide the desired wallet address to transfer BNB to
+            value: amount, // Include the desired amount of BNB to send
+          });
+        } else if (selected1 !== "0x0000000000000000000000000000000000000000") {
+          const contract = new web3.eth.Contract(TOKEN_ABI, selected1);
+          await contract.methods.transfer(toAddress, amount).send({
+            from: addr, // Provide the "from" address
+          });
+        }
+      } else {
+        console.log("Amount Empty");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return {
     connect,
+    donate,
     checkIfWalletIsConnected,
     getBalances,
     addr,
