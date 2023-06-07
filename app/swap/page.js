@@ -10,8 +10,29 @@ import "@styles/swap.css";
 
 const Swap = () => {
   const [modalOpen, setModelOpen] = useState(false);
-  const close = () => setModelOpen(false);
-  const open = () => setModelOpen(true);
+  const [modalOpen2, setModelOpen2] = useState(false);
+  const [modalOpen3, setModelOpen3] = useState(false);
+
+  const openModal = (modal) => {
+    setModelOpen(false);
+    setModelOpen2(false);
+    setModelOpen3(false);
+
+    switch (modal) {
+      case 1:
+        setModelOpen(true);
+        break;
+      case 2:
+        setModelOpen2(true);
+        break;
+      case 3:
+        setModelOpen3(true);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="cont">
@@ -24,16 +45,13 @@ const Swap = () => {
             {modalOpen && (
               <Modal
                 modalOpen={modalOpen}
-                handleClose={close}
-                text="All Swaps has a 1.5% fee to support WalletFi!"
+                handleClose={() => setModelOpen(false)}
+                text="All Swaps have a 1.5% fee to support WalletFi!"
               />
             )}
           </AnimatePresence>
-          <motion.div
-            className="swap-header"
-            onClick={() => (modalOpen ? close() : open())}
-          >
-            <h2>Your Transaction</h2>
+          <motion.div className="swap-header" onClick={() => openModal(1)}>
+            <h2>Swap</h2>
             <svg
               className="infoIcon"
               xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +64,8 @@ const Swap = () => {
           <TokenSelect tokenList={tokenList} />
         </div>
         <span className="infoApprove">
-          When approving please wait a bit your wallet will open automatically
-          to execute the swap
+          When approving, please wait a bit. Your wallet will open automatically
+          to execute the swap.
         </span>
         <div>
           <div id="qrCode"></div>
@@ -62,18 +80,15 @@ const Swap = () => {
               mode="wait"
               onExitComplete={() => null}
             >
-              {modalOpen && (
+              {modalOpen2 && (
                 <Modal
-                  modalOpen={modalOpen}
-                  handleClose={close}
-                  text="There are no fees, Drip Dex is used!"
+                  modalOpen={modalOpen2}
+                  handleClose={() => setModelOpen2(false)}
+                  text="There are no fees. Drip Dex is used!"
                 />
               )}
             </AnimatePresence>
-            <motion.div
-              className="swap-header"
-              onClick={() => (modalOpen ? close() : open())}
-            >
+            <motion.div className="swap-header" onClick={() => openModal(2)}>
               <h2>Buy DRIP</h2>
               <svg
                 className="infoIcon"
@@ -93,18 +108,15 @@ const Swap = () => {
               mode="wait"
               onExitComplete={() => null}
             >
-              {modalOpen && (
+              {modalOpen3 && (
                 <Modal
-                  modalOpen={modalOpen}
-                  handleClose={close}
-                  text="10% fees, Drip Dex is used!"
+                  modalOpen={modalOpen3}
+                  handleClose={() => setModelOpen3(false)}
+                  text="10% fees. Drip Dex is used!"
                 />
               )}
             </AnimatePresence>
-            <motion.div
-              className="swap-header"
-              onClick={() => (modalOpen ? close() : open())}
-            >
+            <motion.div className="swap-header" onClick={() => openModal(3)}>
               <h2>Sell DRIP</h2>
               <svg
                 className="infoIcon"
