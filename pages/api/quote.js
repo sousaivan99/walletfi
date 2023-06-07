@@ -25,15 +25,10 @@ export default async function handler(req, res) {
 
     const quote = response.data;
 
-    // Add CORS headers to allow cross-origin requests
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, Content-Type");
-
     res.status(200).json(quote);
   } catch (error) {
     res.status(500).json({
-      error: "Failed to fetch quote",
+      error: error,
       coin1: selectedCoin1,
       coin2: selectedCoin2,
       amount: a,
