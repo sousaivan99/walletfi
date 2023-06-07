@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default async function handler(req, res) {
   let { selectedCoin1, selectedCoin2, a } = req.query;
   const fee = 1.5; // 1.5% fee
@@ -9,15 +11,19 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(
-      `https://api.1inch.exchange/v5.0/56/quote?fromTokenAddress=${selectedCoin1}&toTokenAddress=${selectedCoin2}&amount=${a}&fee=${fee}`
+    const response = await axios.get(
+      `https://api.1inch.exchange/v5.0/56/quote`,
+      {
+        params: {
+          fromTokenAddress: selectedCoin1,
+          toTokenAddress: selectedCoin2,
+          amount: a,
+          fee: fee,
+        },
+      }
     );
 
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const quote = await response.json();
+    const quote = response.data;
 
     // Add CORS headers to allow cross-origin requests
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -27,7 +33,7 @@ export default async function handler(req, res) {
     res.status(200).json(quote);
   } catch (error) {
     res.status(500).json({
-      error: error.message,
+      error: "Failed to fetch quote",
       coin1: selectedCoin1,
       coin2: selectedCoin2,
       amount: a,
