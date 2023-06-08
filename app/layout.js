@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   const handleAccountsChanged = useCallback(
     debounce(async (address) => {
       await addAddress(address);
-    }, 300), // Adjust the debounce delay as needed (e.g., 1000ms)
+    }, 300),
     []
   );
 
@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <head>
           <title>WalletFi</title>
+          <link rel="icon" href="/favicon.png" sizes="any" />
         </head>
         <body className={roboto.className + " " + "wrapper"}>
           <Header />
