@@ -36,7 +36,7 @@ const Swap = () => {
   return (
     <>
       <div className="cont">
-        <div className="wallet-cont">
+        <div className="swap-cont">
           <AnimatePresence
             initial={false}
             mode="wait"
