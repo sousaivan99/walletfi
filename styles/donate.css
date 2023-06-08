@@ -1,10 +1,13 @@
 .donate-send {
-  width: fit-content;
-  background-color: var(--active);
-  color: var(--text-contrast);
+  width: 150px;
+  height: 35px;
   border: 0;
-  padding: 0.5em 1em 0.5em 1em;
+  background-color: var(--red);
+  color: var(--text-contrast);
+  font-size: 18px;
   border-radius: 6px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 .donate-cont {
   display: flex !important;
@@ -31,7 +34,7 @@
   height: 50px;
   padding: 1em;
   font-size: 18px;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   border: 0;
   border-radius: 6px;
   background-color: var(--input);
@@ -60,4 +63,7 @@
 }
 .donate-select-div-top {
   font-size: 14px;
+}
+.donate-send:hover {
+  opacity: 0.7;
 }
