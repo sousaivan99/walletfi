@@ -67,8 +67,14 @@
 }
 .swap-cont {
   display: flex !important;
+  flex-direction: column;
   justify-content: space-around;
   gap: 1em !important;
+}
+.tList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .swap-cont input {

@@ -173,51 +173,45 @@ const TokenSelect = ({ tokenList }) => {
   }, [selected1, selected2, addr, balance]);
   return (
     <>
-      <div className="swap-cont">
-        <div className="select-div">
-          <div className="select-div-top">
-            <Select
-              options={filteredOptions}
-              styles={customStyles}
-              isSearchable={false}
-              className="swap-selectBox"
-              onChange={handleTokenChange}
-            />
-            <span>Balance: {balance}</span>
-          </div>
-          <input
-            id="input1"
-            type="number"
-            onKeyUp={getQuoteRes}
-            placeholder="0"
-          ></input>
+      <div className="select-div">
+        <div className="select-div-top">
+          <Select
+            options={filteredOptions}
+            styles={customStyles}
+            isSearchable={false}
+            className="swap-selectBox"
+            onChange={handleTokenChange}
+          />
+          <span>Balance: {balance}</span>
         </div>
-
-        <div className="select-div">
-          <div className="select-div-top">
-            <Select
-              options={filteredOptions}
-              styles={customStyles}
-              isSearchable={false}
-              className="swap-selectBox"
-              onChange={handleTokenChange2}
-            />
-            <span>Balance: {balance2}</span>
-          </div>
-          <input
-            id="input2"
-            type="number"
-            onKeyUp={getQuoteRes2}
-            placeholder="0"
-          ></input>
-          <div className="send-cont2">
-            <button onClick={swap}>Send</button>
-          </div>
-        </div>
+        <input
+          id="input1"
+          type="number"
+          onKeyUp={getQuoteRes}
+          placeholder="0"
+        ></input>
       </div>
-      <div>
-        <div id="qrCode"></div>
-        <div id="qr_link"></div>
+
+      <div className="select-div">
+        <div className="select-div-top">
+          <Select
+            options={filteredOptions}
+            styles={customStyles}
+            isSearchable={false}
+            className="swap-selectBox"
+            onChange={handleTokenChange2}
+          />
+          <span>Balance: {balance2}</span>
+        </div>
+        <input
+          id="input2"
+          type="number"
+          onKeyUp={getQuoteRes2}
+          placeholder="0"
+        ></input>
+        <div className="send-cont2">
+          <button onClick={swap}>Send</button>
+        </div>
       </div>
     </>
   );
