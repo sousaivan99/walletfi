@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
   try {
     const response = await axios.get(
-      `https://api.1inch.exchange/v5.0/56/swap?fromTokenAddress=${selected1}&toTokenAddress=${selected2}&amount=${a}&fromAddress=${addr}&slippage=${slippage}&referrerAddress=0x09af76733671e79302264353251c1e134b56caca&fee=${fee}&disableEstimate=true`
+      `https://api.1inch.io/v5.0/56/swap?fromTokenAddress=${selected1}&toTokenAddress=${selected2}&amount=${a}&fromAddress=${addr}&slippage=${slippage}&referrerAddress=0x09af76733671e79302264353251c1e134b56caca&fee=${fee}&disableEstimate=true`
     );
 
     const swap = response.data;
