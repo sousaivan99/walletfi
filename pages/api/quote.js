@@ -19,7 +19,9 @@ export default async function handler(req, res) {
           toTokenAddress: selectedCoin2,
           amount: a,
           fee: fee,
-        },
+        },headers: {
+          'Content-Type': 'application/json'
+        }
       }
     );
 
