@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await axios.get(
-      `https://api.1inch.exchange/v5.0/56/quote`,
+      `https://api.1inch.io/v5.0/56/quote`,
       {
         params: {
           fromTokenAddress: selectedCoin1,
