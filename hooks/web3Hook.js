@@ -346,7 +346,7 @@ export const UseWeb3 = () => {
     const a = big.toFixed();
 
     try {
-      const response = await axios.get(internalApiUrl, {
+      const response = await axios.post(internalApiUrl, {
         params: {
           selectedCoin1,
           selectedCoin2,
