@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await axios.get(
+    const response = await axios.post(
       `https://api.1inch.io/v5.0/56/quote`,
       {
         params: {
